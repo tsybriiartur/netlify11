@@ -11,6 +11,7 @@ import Home from './Pages/Home';
 import ErrorPage from './Pages/ErrorPage'; 
 import VerticalTrafficLight from './Pages/VerticalTrafficLight';
 import HorizontalTrafficLight from './Pages/HorizontalTrafficLight';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import './index.css';
 
@@ -26,11 +27,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'vertical',
-        element: <VerticalTrafficLight />,
+        element: (
+          <ProtectedRoute>
+            <VerticalTrafficLight />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'horizontal',
-        element: <HorizontalTrafficLight />,
+        element: (
+          <ProtectedRoute>
+            <HorizontalTrafficLight />
+          </ProtectedRoute>
+        ),
       },
 
     ],
