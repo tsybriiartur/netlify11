@@ -1,0 +1,62 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  background: #181818;
+  color: #f3f3f3;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  /* justify-content: center; */
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+.traffic-lights {
+  background: #222;
+  border-radius: 2rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 32px #000a;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: auto;
+  height: auto;
+}
+
+.light {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #222;
+  box-shadow: 0 0 12px #000a;
+  transition: background 0.3s, box-shadow 0.3s;
+  border: 3px solid #444;
+}
+
+.light.active {
+  box-shadow: 0 0 40px 10px currentColor;
+}
+.light.red.active {
+  background: #e53935;
+}
+.light.yellow.active {
+  background: #fbc02d;
+}
+.light.green.active {
+  background: #43a047;
+}

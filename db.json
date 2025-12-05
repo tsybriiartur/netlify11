@@ -1,0 +1,20 @@
+{
+  "trafficLights": {
+    "currentColor": {
+      "vertical": "yellow",
+      "horizontal": "red"
+    },
+    "stats": {
+      "vertical": {
+        "red": 6,
+        "yellow": 10,
+        "green": 2
+      },
+      "horizontal": {
+        "red": 31,
+        "yellow": 11,
+        "green": 4
+      }
+    }
+  }
+}
