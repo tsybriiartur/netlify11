@@ -57,6 +57,16 @@ function Header() {
                       Вертикальний світлофор
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink 
+                      to="/f1-traffic-light"
+                      className={({ isActive }) => 
+                        isActive ? "btn btn-primary btn-sm" : "btn btn-ghost btn-sm"
+                      }
+                    >
+                      Світлофор F1
+                    </NavLink>
+                  </li>
                 </>
               ) : (
                 <>

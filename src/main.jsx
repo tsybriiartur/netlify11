@@ -11,6 +11,7 @@ import Home from './Pages/Home';
 import ErrorPage from './Pages/ErrorPage'; 
 import VerticalTrafficLight from './Pages/VerticalTrafficLight';
 import HorizontalTrafficLight from './Pages/HorizontalTrafficLight';
+import F1TrafficLightPage from './Pages/F1TrafficLightPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import './index.css';
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <HorizontalTrafficLight />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'f1-traffic-light',
+        element: (
+          <ProtectedRoute>
+            <F1TrafficLightPage />
           </ProtectedRoute>
         ),
       },

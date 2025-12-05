@@ -17,6 +17,7 @@ export const TrafficLightsProvider = ({ children }) => {
     horizontal: { red: 0, yellow: 0, green: 0 }
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [f1State, setF1State] = useState('stop'); // 'stop' or 'start'
 
   // ---------------- FETCH STORE ----------------
   const fetchData = async () => {
@@ -36,6 +37,36 @@ export const TrafficLightsProvider = ({ children }) => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  // Автоматична зміна стану F1 кожні 10 секунд (тільки коли кнопка не заблокована)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const isAnyGreen = currentColor.vertical === 'green' || currentColor.horizontal === 'green';
+      if (!isAnyGreen) {
+        setF1State(prev => prev === 'stop' ? 'start' : 'stop');
+      }
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [currentColor]);
+
+  // Синхронізація: якщо автомобільний світлофор зелений, F1 має бути "Стоп"
+  useEffect(() => {
+    const isAnyGreen = currentColor.vertical === 'green' || currentColor.horizontal === 'green';
+    if (isAnyGreen && f1State !== 'stop') {
+      setF1State('stop');
+    }
+  }, [currentColor, f1State]);
+
+  // Перевірка чи кнопка F1 має бути заблокована
+  const isF1ButtonDisabled = currentColor.vertical === 'green' || currentColor.horizontal === 'green';
+
+  // Функція для зміни стану F1 вручну
+  const toggleF1State = () => {
+    if (!isF1ButtonDisabled) {
+      setF1State(prev => prev === 'stop' ? 'start' : 'stop');
+    }
+  };
 
   // ---------------- SET COLOR ----------------
   const handleColorChange = async (direction, color) => {
@@ -63,7 +94,10 @@ export const TrafficLightsProvider = ({ children }) => {
       currentColor,
       stats,
       isLoading,
-      onColorChange: handleColorChange
+      onColorChange: handleColorChange,
+      f1State,
+      isF1ButtonDisabled,
+      toggleF1State
     }}>
       {children}
     </TrafficLightsContext.Provider>
