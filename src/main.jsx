@@ -7,10 +7,10 @@ import {
 } from 'react-router-dom';
 
 import App from './App'; 
-import Home from './pages/Home'; 
-import ErrorPage from './pages/ErrorPage'; 
-import VerticalTrafficLight from './pages/VerticalTrafficLight';
-import HorizontalTrafficLight from './pages/HorizontalTrafficLight';
+import Home from './Pages/Home'; 
+import ErrorPage from './Pages/ErrorPage'; 
+import VerticalTrafficLight from './Pages/VerticalTrafficLight';
+import HorizontalTrafficLight from './Pages/HorizontalTrafficLight';
 
 import './index.css';
 
